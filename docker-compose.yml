@@ -38,9 +38,6 @@ services:
       traefik.http.routers.http-catchall.entrypoints: web
       traefik.http.routers.http-catchall.middlewares: redirect-to-https
       
-      # Middleware
-      traefik.http.middlewares.traefik-auth.basicauth.removeheader: true
-      traefik.http.middlewares.traefik-auth.basicauth.users: test:$$apr1$$H6uskkkW$$IgXLP6ewTrSuBkTrqE8wj/,test2:$$apr1$$d9hr9HBB$$4HxwgUir3HP4EsggP/QNo0
       # middleware redirect
       traefik.http.middlewares.redirect-to-https.redirectscheme.scheme: https
 
