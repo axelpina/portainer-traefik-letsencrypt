@@ -2,7 +2,7 @@
 
 This repository will help you set up Portainer served by Traefik v2.1.6 over HTTPS (Let's Encrypt)
 
-##Setup
+## Setup
 
 Simply `git clone` the repository into your server's directory.
 
@@ -20,3 +20,12 @@ RESOLVER=name
 `ACME_EMAIL` is the email address which will be used when registering the certificate at Let's Encrypt.
 `ODOO_TRAEFIK_URL` is the hostname which Traefik will listen to to route requests to the Odoo container.
 `RESOLVER` is responsible for retrieving certificates from an ACME server.
+
+Traefik will automatically renew the certificate every 3 months.
+
+## Run
+
+```bash
+cd portainer-traefik-letsencrypt
+docker-compose up -d
+```
