@@ -21,7 +21,9 @@ RESOLVER=name
 
 * `ODOO_TRAEFIK_URL` is the hostname which Traefik will listen to to route requests to the Odoo container.
 
-* `RESOLVER` is responsible for retrieving certificates from an ACME server.
+# Resolver
+
+Replace `myresolver` with your own resolver name.
 
 Traefik will automatically renew the certificate every 3 months.
 

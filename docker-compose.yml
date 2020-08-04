@@ -12,11 +12,11 @@ services:
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.${RESOLVER}.acme.httpchallenge=true"
-      - "--certificatesresolvers.${RESOLVER}.acme.httpchallenge.entrypoint=web"
-      - "--certificatesresolvers.${RESOLVER}.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
-      - "--certificatesresolvers.${RESOLVER}.acme.email=${ACME_EMAIL}"
-      - "--certificatesresolvers.${RESOLVER}.acme.storage=/letsencrypt/acme.json"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
+      - "--certificatesresolversmyresolver.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.myresolver.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
+      - "--certificatesresolvers.myresolver.acme.email=${ACME_EMAIL}"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     ports:
       - 80:80
       - 443:443
@@ -30,7 +30,7 @@ services:
       traefik.http.routers.traefik.rule: Host(`${PORTAINER_TRAEFIK_URL}`)
       traefik.http.routers.traefik.entrypoints: websecure
       traefik.http.routers.traefik.service: api@internal
-      traefik.http.routers.traefik.tls.certresolver: ${RESOLVER}
+      traefik.http.routers.traefik.tls.certresolver: myresolver
       traefik.http.routers.traefik.middlewares: traefik-auth
 
       # Global redirect to https
@@ -52,10 +52,10 @@ services:
     labels:
       traefik.enable: true
 
-      traefik.http.routers.${RESOLVER}.rule: Host(`${PORTAINER_TRAEFIK_URL}`)
-      traefik.http.routers.${RESOLVER}.entrypoints: websecure
-      traefik.http.routers.${RESOLVER}.tls.certresolver: ${RESOLVER}
-      traefik.http.routers.${RESOLVER}.service: portainer_svc
+      traefik.http.routers.myresolver.rule: Host(`${PORTAINER_TRAEFIK_URL}`)
+      traefik.http.routers.myresolver.entrypoints: websecure
+      traefik.http.routers.myresolver.tls.certresolver: myresolver
+      traefik.http.routers.myresolver.service: portainer_svc
 
       traefik.http.services.portainer_svc.loadBalancer.server.port: 9000
 
