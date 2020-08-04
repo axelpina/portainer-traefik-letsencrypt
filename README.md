@@ -8,6 +8,8 @@ Simply `git clone` the repository into your server's directory.
 
 `git clone https://github.com/AxelPina/portainer-traefik-letsencrypt.git`
 
+  Apply permissions to be able to edit the `.env`.
+
 Then fill the `.env` file with your credentials and your domain:
 
 ```
