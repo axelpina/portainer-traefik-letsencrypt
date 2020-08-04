@@ -39,4 +39,4 @@ cd portainer-traefik-letsencrypt
 docker-compose up -d
 ```
 
-**NOTE:**Traefik will automatically renew the certificate every 3 months.
+**NOTE:** Traefik will automatically renew the certificate every 3 months.
