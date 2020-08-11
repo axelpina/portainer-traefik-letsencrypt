@@ -26,7 +26,7 @@ services:
     labels:
       traefik.enable: true
 
-      # Routers
+      # Routers 
       traefik.http.routers.traefik.rule: Host(`${PORTAINER_TRAEFIK_URL}`)
       traefik.http.routers.traefik.entrypoints: websecure
       traefik.http.routers.traefik.service: api@internal
