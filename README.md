@@ -45,8 +45,8 @@ docker-compose up -d
 
 Add the portainer/agent service to your Docker Compose stack on the host you want to manage, reup the stack with `docker-compose up -d` and then in the manager host, just connect to the WAN IP which has port 9001 forwarded in Portainer. 
 
-```
-portainer_agent:
+
+```portainer_agent:
     image: portainer/agent
     container_name: agent
     ports:
