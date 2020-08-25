@@ -53,5 +53,4 @@ Add the portainer/agent service to your Docker Compose stack on the host you wan
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/docker/volumes:/var/lib/docker/volumes
-    restart: always
-    ```
+    restart: always```
