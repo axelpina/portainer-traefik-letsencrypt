@@ -57,7 +57,7 @@ portainer_agent:
       - /var/lib/docker/volumes:/var/lib/docker/volumes
     restart: always
 ```
-<<<<<<< HEAD
+
 ## Upgrading to Portainer 2.0 (Optional)
 
 Portainer has released 2.0 (Aug. 31st 2020) as `portainer/portainer-ce` to ensure auto-updaters (like watchtower) don't expose users to risks by automatically updating on release.
