@@ -45,7 +45,9 @@ docker-compose up -d
 
 Add the portainer/agent service to your Docker Compose stack on the host you want to manage, reup the stack with `docker-compose up -d` and then in the manager host, just connect to the WAN IP which has port 9001 forwarded in Portainer. 
 
-```portainer_agent:
+
+```
+portainer_agent:
     image: portainer/agent
     container_name: agent
     ports:
@@ -55,6 +57,7 @@ Add the portainer/agent service to your Docker Compose stack on the host you wan
       - /var/lib/docker/volumes:/var/lib/docker/volumes
     restart: always
 ```
+<<<<<<< HEAD
 ## Upgrading to Portainer 2.0 (Optional)
 
 (Aug. 31st 2020) Portainer has released 2.0 as `portainer/portainer-ce` to ensure auto-updaters (like watchtower) don't expose users to risks by automatically updating on release.
@@ -64,3 +67,5 @@ To upgrade simply switch the image in the `.yml` to `portainer/portainer-ce`.
 **Note:** Extensions have now been removed; there is now no ability to use RBAC, Registry Manager, or External Authentication extensions in CE 2.0. **EXTENSION USERS, DO NOT UPGRADE TO PORTAINER CE 2.0**
 
 **WARNING:** Migrating to this version with external endpoints defined will render them un-manageable.
+=======
+>>>>>>> a921815583975fa184ebb719c7efdc1e7e3aa076
