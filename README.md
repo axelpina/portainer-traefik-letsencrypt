@@ -41,7 +41,7 @@ docker-compose up -d
 
 **NOTE:** Traefik will automatically renew the certificate every 3 months.
 
-## (Optional) Exposing Docker sockets via portainer-agent (Simple way)
+## Exposing Docker sockets via portainer-agent (Optional)
 
 Add the portainer/agent service to your Docker Compose stack on the host you want to manage, reup the stack with `docker-compose up -d` and then in the manager host, just connect to the WAN IP which has port 9001 forwarded in Portainer. 
 
