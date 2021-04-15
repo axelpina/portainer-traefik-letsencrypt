@@ -64,6 +64,7 @@ Portainer has released 2.0 (Aug. 31st 2020) as `portainer/portainer-ce` to ensur
 
 To upgrade simply switch the image in the `.yml` to `portainer/portainer-ce`.
 
-**Note:** Extensions have now been removed; there is now no ability to use RBAC, Registry Manager, or External Authentication extensions in CE 2.0. **EXTENSION USERS, DO NOT UPGRADE TO PORTAINER CE 2.0**
+~~**WARNING:** Migrating to this version with external endpoints defined will render them un-manageable.~~
 
-**WARNING:** Migrating to this version with external endpoints defined will render them un-manageable.
+**Note:** As of Portainer Community Edition v2.1.1 external endpoints seem to be manageable. *(I recently tested this out, not sure if this was fixed in earlier versions of 2.0, if that's the case I apologize in advance)*
+
