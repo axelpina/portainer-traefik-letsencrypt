@@ -3,7 +3,7 @@ version: "3.3"
 services:
 
   traefik:
-    image: traefik:v2.1.6
+    image: traefik:latest
     container_name: Traefik
     command:
       - "--log.level=INFO"
@@ -42,7 +42,7 @@ services:
       traefik.http.middlewares.redirect-to-https.redirectscheme.scheme: https
 
   portainer:
-    image: portainer/portainer
+    image: portainer/portainer-ce
     container_name: Portainer
     command: -H unix:///var/run/docker.sock
     restart: always
