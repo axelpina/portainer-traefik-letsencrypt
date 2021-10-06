@@ -27,11 +27,6 @@ PORTAINER_TRAEFIK_URL=whatever.mydomain.com
 * `ACME_EMAIL` is the email address which will be used when registering the certificate at Let's Encrypt.
 * `ODOO_TRAEFIK_URL` is the hostname which Traefik will listen to route requests.
 
-## Resolver
-
-Replace `myresolver` with your own resolver name.
-
-
 ## Run
 
 ```bash
