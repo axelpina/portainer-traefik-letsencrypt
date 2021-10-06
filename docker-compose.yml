@@ -12,11 +12,11 @@ services:
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
-      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
-      - "--certificatesresolvers.myresolver.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
-      - "--certificatesresolvers.myresolver.acme.email=${ACME_EMAIL}"
-      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge=true"
+      - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.letsencrypt.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
+      - "--certificatesresolvers.letsencrypt.acme.email=${ACME_EMAIL}"
+      - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
     ports:
       - 80:80
       - 443:443
@@ -30,7 +30,7 @@ services:
       traefik.http.routers.traefik.rule: Host(`${PORTAINER_TRAEFIK_URL}`)
       traefik.http.routers.traefik.entrypoints: websecure
       traefik.http.routers.traefik.service: api@internal
-      traefik.http.routers.traefik.tls.certresolver: myresolver
+      traefik.http.routers.traefik.tls.certresolver: letsencrypt
       traefik.http.routers.traefik.middlewares: traefik-auth
 
       # Global redirect to HTTPS
@@ -51,12 +51,10 @@ services:
       - portainer_data:/data
     labels:
       traefik.enable: true
-
       traefik.http.routers.myresolver.rule: Host(`${PORTAINER_TRAEFIK_URL}`)
       traefik.http.routers.myresolver.entrypoints: websecure
-      traefik.http.routers.myresolver.tls.certresolver: myresolver
+      traefik.http.routers.myresolver.tls.certresolver: letsencrypt
       traefik.http.routers.myresolver.service: portainer_svc
-
       traefik.http.services.portainer_svc.loadBalancer.server.port: 9000
 
 volumes:
