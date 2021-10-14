@@ -42,7 +42,7 @@ services:
       traefik.http.middlewares.redirect-to-https.redirectscheme.scheme: https
 
   portainer:
-    image: portainer/portainer-ce
+    image: portainer/portainer-ce:latest
     container_name: Portainer
     command: -H unix:///var/run/docker.sock
     restart: always
