@@ -1,8 +1,8 @@
 # Portainer + Traefik w/ Let's Encrypt
 
-This repository will help you set up Portainer served by Traefik v2.1.6 over HTTPS (Let's Encrypt) in Ubuntu 18.04
+This repository will help you set up Portainer served by Traefik over HTTPS (Let's Encrypt)
 
-**Before anything make sure that Docker Engine & Docker compose are installed in the Ubuntu 18.04 server**
+**Make sure that Docker Engine & Docker compose are installed in your server**
 
 - [Docker Engine](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 
