@@ -44,11 +44,12 @@ Add the portainer/agent service to your Docker Compose stack on the host you wan
 ```
 portainer_agent:
     image: portainer/agent
-    container_name: agent
+    container_name: portainer_agent
     ports:
-      - 9001:9001
+      - "9001:9001"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /var/lib/docker/volumes:/var/lib/docker/volumes
+      - /var/run/docker.sock:/var/run/docker.sock:ro  # Mount with read-only access
+      - /var/lib/docker/volumes:/var/lib/docker/volumes:ro  # Mount with read-only access
     restart: always
+
 ```
