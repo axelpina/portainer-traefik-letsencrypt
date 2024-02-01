@@ -1,10 +1,10 @@
-version: "3.3"
+version: "3.8"
 
 services:
 
   traefik:
     image: traefik:latest
-    container_name: Traefik
+    container_name: traefik
     command:
       - "--log.level=INFO"
       - "--api"
@@ -18,44 +18,44 @@ services:
       - "--certificatesresolvers.letsencrypt.acme.email=${ACME_EMAIL}"
       - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
     volumes:
       - ./letsencrypt:/letsencrypt
       - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
-      traefik.enable: true
+      - "traefik.enable=true"
 
-      # Routers 
-      traefik.http.routers.traefik.rule: Host(`${PORTAINER_TRAEFIK_URL}`)
-      traefik.http.routers.traefik.entrypoints: websecure
-      traefik.http.routers.traefik.service: api@internal
-      traefik.http.routers.traefik.tls.certresolver: letsencrypt
-      traefik.http.routers.traefik.middlewares: traefik-auth
+      # Routers
+      - "traefik.http.routers.traefik.rule=Host(`${PORTAINER_TRAEFIK_URL}`)"
+      - "traefik.http.routers.traefik.entrypoints=websecure"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.routers.traefik.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.traefik.middlewares=traefik-auth"
 
       # Global redirect to HTTPS
-      traefik.http.routers.http-catchall.rule: hostregexp(`{host:.+}`)
-      traefik.http.routers.http-catchall.entrypoints: web
-      traefik.http.routers.http-catchall.middlewares: redirect-to-https
-      
+      - "traefik.http.routers.http-catchall.rule=hostregexp(`{host:.+}`)"
+      - "traefik.http.routers.http-catchall.entrypoints=web"
+      - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
+
       # Middleware Redirect
-      traefik.http.middlewares.redirect-to-https.redirectscheme.scheme: https
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
 
   portainer:
     image: portainer/portainer-ce:latest
-    container_name: Portainer
-    command: -H unix:///var/run/docker.sock
+    container_name: portainer
+    command: "-H unix:///var/run/docker.sock"
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
     labels:
-      traefik.enable: true
-      traefik.http.routers.myresolver.rule: Host(`${PORTAINER_TRAEFIK_URL}`)
-      traefik.http.routers.myresolver.entrypoints: websecure
-      traefik.http.routers.myresolver.tls.certresolver: letsencrypt
-      traefik.http.routers.myresolver.service: portainer_svc
-      traefik.http.services.portainer_svc.loadBalancer.server.port: 9000
+      - "traefik.enable=true"
+      - "traefik.http.routers.myresolver.rule=Host(`${PORTAINER_TRAEFIK_URL}`)"
+      - "traefik.http.routers.myresolver.entrypoints=websecure"
+      - "traefik.http.routers.myresolver.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.myresolver.service=portainer_svc"
+      - "traefik.http.services.portainer_svc.loadBalancer.server.port=9000"
 
 volumes:
   portainer_data:
