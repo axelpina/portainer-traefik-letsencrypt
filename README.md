@@ -1,3 +1,7 @@
+
+> [!CAUTION]
+> This repository is no longer maintained as of May 18th, 2025.
+
 # Portainer + Traefik w/ Let's Encrypt
 
 This repository will help you set up Portainer served by Traefik over HTTPS (Let's Encrypt)
